@@ -40,70 +40,50 @@ public class Program
 	}
 	public static class bookCodeHandler {
 	    public static void bookCodeInitialise() {
-            	int bookCodeSecondaryNumberInit = 0;
-            	Console.WriteLine("Please Enter the Alphabetical Position of the BookCode's Letter. ");
-		int bookCodeLetterPosition = Convert.ToInt32(Console.ReadLine());
-     	    	letterAlphabetPositionHandler(bookCodeLetterPosition);
-            	Console.Clear();
-            	Console.WriteLine("Please enter the BookCode's number. ");
-            	int bookCodeNumberInit = Convert.ToInt32(Console.ReadLine());
-            	Console.Clear();
-            	if ((bookCodeNumberInit % 10) == 0) {
-                	bookCodeNumberInit = 0;
-           	    	bookCodeSecondaryNumberInit++;
-            	}
-            	bookCodeNumberInit.ToString();
-            	string bookCode = bookCodeLetterInit + bookCodeNumberInit + bookCodeSecondaryNumberInit;
-            	Console.WriteLine(bookCode);
-            	Console.WriteLine("Is this your Book Code? (Y/N)");
-            	string bookCodeConfirmation = Console.ReadLine().ToUpper();
-            	switch (bookCodeConfirmation) {
-                	case "Y":
-                    		Console.WriteLine("BookCode Confirmed. Initializing Calculator");
-                    		break;
-                	case "N":
-                    		Console.WriteLine("Initiating BookCode Override...");
-                    		Thread.Sleep(1000);
-                    		Console.Clear();
-                    		bookCodeOverride(bookCode, bookCodeConfirmation);
-                    		break;
-                	default:
-                    		Console.WriteLine("Input not Recognized. Please Re-enter your BookCode");
-                    		bookCodeInitialise();
-                    		break;
-                }
-	    }
-            public static void bookCodeOverride(string bookCode, string bookCodeConfirmation) {
-	    	Console.WriteLine("Please manually enter your BookCode. The letter MUST be Capital. ");
-            	bookCode = Console.ReadLine();
-            	Console.WriteLine(bookCode);
-            	Console.WriteLine("Is this your BookCode? (Y/N)");
-            	bookCodeConfirmation = Console.ReadLine().ToUpper();
-            	switch (bookCodeConfirmation) {
-                	case "N":
-                    	bookCodeOverride(bookCode, bookCodeConfirmation);
-                    	break;
+        	int bookCodeSecondaryNumberInit = 0;
+        	Console.WriteLine("Please Enter the BookCode's Letter. ");
+        	string bookCodeLetterInit = Console.ReadLine();
+        	Console.Clear();
+        	Console.WriteLine("Please enter the BookCode's number. ");
+        	int bookCodeNumberInit = Convert.ToInt32(Console.ReadLine());
+        	Console.Clear();
+        	if ((bookCodeNumberInit % 10) == 0) {
+            	bookCodeNumberInit = 0;
+       	    	bookCodeSecondaryNumberInit++;
+        	}
+        	bookCodeNumberInit.ToString();
+        	string bookCode = bookCodeLetterInit + bookCodeNumberInit + bookCodeSecondaryNumberInit;
+        	Console.WriteLine(bookCode);
+        	Console.WriteLine("Is this your Book Code? (Y/N)");
+        	string bookCodeConfirmation = Console.ReadLine().ToUpper();
+        	switch (bookCodeConfirmation) {
+            	case "Y":
+                	Console.WriteLine("BookCode Confirmed. Initializing Calculator...");
+                	break;
+            	case "N":
+            		Console.WriteLine("Initiating BookCode Override...");
+            		Thread.Sleep(1000);
+            		Console.Clear();
+            		bookCodeOverride(bookCode, bookCodeConfirmation);
+            		break;
+            	default:
+            		Console.WriteLine("Input not Recognized. Please Re-enter your BookCode");
+            		bookCodeInitialise();
+            		break;
             }
-	    public static void letterAlphabetPositionHandler(x) {
-		Dictionary<int, string> alphabeticalHandler = new Dictionary<int, string>();
-		alphabeticalHandler.Add(1, "A");
-		alphabeticalHandler.Add(2, "B");
-		alphabeticalHandler.Add(3, "C");
-		alphabeticalHandler.Add(4, "D");
-		alphabeticalHandler.Add(5, "E");
-		alphabeticalHandler.Add(6, "F");
-		alphabeticalHandler.Add(7, "G");
-		alphabeticalHandler.Add(8, "H");
-		alphabeticalHandler.Add(9, "I");
-		alphabeticalHandler.Add(10, "J");
-		// add the rest of the alphabet in this dictionary
 	    }
-	    public static void errorHandler() {
-                Console.WriteLine("An Error has occurred!");
-                Console.WriteLine("Press any key to close application...");
-                Console.ReadKey();
-            }
-	}
+        public static void bookCodeOverride(string bookCode, string bookCodeConfirmation) {
+    	Console.WriteLine("Please manually enter your BookCode. The letter MUST be Capital. ");
+    	bookCode = Console.ReadLine();
+    	Console.WriteLine(bookCode);
+    	Console.WriteLine("Is this your BookCode? (Y/N)");
+    	bookCodeConfirmation = Console.ReadLine().ToUpper();
+    	switch (bookCodeConfirmation) {
+        	case "N":
+            	bookCodeOverride(bookCode, bookCodeConfirmation);
+            	break;
+    	    }
+        }
     }
     public static void errorHandler() {
         Console.WriteLine("An Error has occurred!");
